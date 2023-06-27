@@ -25,13 +25,7 @@ public class SignUpTest {
         driver = new ChromeDriver();
         faker = new Faker();
     }
-
-    @After
-    public void tearDown() {
-        driver.close();
-    }
-
-    @Test
+@Test
     public void successfulSignUpRedirectsToSignIn() {
         driver.get("http://localhost:8080/users/new");
         driver.findElement(By.id("username")).sendKeys(faker.name().firstName());
@@ -40,4 +34,10 @@ public class SignUpTest {
         String title = driver.getTitle();
         Assert.assertEquals("Please sign in", title);
     }
+    @After
+    public void tearDown() {
+        driver.close();
+    }
+
+    
 }
